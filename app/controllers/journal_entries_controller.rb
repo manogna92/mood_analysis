@@ -1,4 +1,14 @@
 class JournalEntriesController < ApplicationController
+  before_action :current_user_must_be_journal_entry_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_journal_entry_user
+    journal_entry = JournalEntry.find(params[:id])
+
+    unless current_user == journal_entry.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @journal_entries = JournalEntry.all
 

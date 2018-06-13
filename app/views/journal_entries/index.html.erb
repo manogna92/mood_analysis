@@ -24,8 +24,11 @@
         <td><%= journal_entry.user.created_at %></td>
         <td>
           <a href="/journal_entries/<%= journal_entry.id %>" class="btn btn-primary">Show</a>
-          <a href="/journal_entries/<%= journal_entry.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_journal_entry/<%= journal_entry.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == journal_entry.user %>
+            <a href="/journal_entries/<%= journal_entry.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_journal_entry/<%= journal_entry.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
