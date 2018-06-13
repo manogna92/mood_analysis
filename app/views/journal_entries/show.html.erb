@@ -15,7 +15,13 @@
       <dd><%= @journal_entry.social_connections_per_day %></dd>
 
       <dt>User</dt>
-      <dd><%= @journal_entry.user_id %></dd>
+      <dd>
+        <% if @journal_entry.user.present? %>
+          <a href="/users/<%= @journal_entry.user_id %>">
+            <%= @journal_entry.user.created_at %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 
