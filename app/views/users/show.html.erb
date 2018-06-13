@@ -20,3 +20,34 @@
     </div>
   </div>
 </div>
+
+<!-- A User has many journal_entries -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Journal Entries
+      </li>
+
+      <% @user.journal_entries.each do |journal_entry| %>
+        <li class="list-group-item">
+          <a href="/journal_entries/<%= journal_entry.id %>">
+            <%= journal_entry.work_hours_per_day %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/journal_entries/<%= journal_entry.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/journal_entries/<%= journal_entry.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_journal_entry/<%= journal_entry.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
