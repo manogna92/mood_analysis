@@ -10,7 +10,7 @@ class JournalEntriesController < ApplicationController
   end
 
   def index
-    @journal_entries = JournalEntry.all
+    @journal_entries = JournalEntry.page(params[:page]).per(10)
 
     render("journal_entries/index.html.erb")
   end
