@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @journal_entry.errors.any? %>
+  <% @journal_entry.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Journal Entry #<%= @journal_entry.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_journal_entry/<%= @journal_entry.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for work_hours_per_day -->
+      <div class="form-group">
+        <label for="work_hours_per_day" class="control-label">
+          Work hours per day
+        </label>
+
+        <input type="text" id="work_hours_per_day" name="work_hours_per_day" placeholder="Work hours per day" class="form-control" value="<%= @journal_entry.work_hours_per_day %>">
+      </div>
+
+      <!-- Label and input for sleep_hours_per_day -->
+      <div class="form-group">
+        <label for="sleep_hours_per_day" class="control-label">
+          Sleep hours per day
+        </label>
+
+        <input type="text" id="sleep_hours_per_day" name="sleep_hours_per_day" placeholder="Sleep hours per day" class="form-control" value="<%= @journal_entry.sleep_hours_per_day %>">
+      </div>
+
+      <!-- Label and input for social_connections_per_day -->
+      <div class="form-group">
+        <label for="social_connections_per_day" class="control-label">
+          Social connections per day
+        </label>
+
+        <input type="text" id="social_connections_per_day" name="social_connections_per_day" placeholder="Social connections per day" class="form-control" value="<%= @journal_entry.social_connections_per_day %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @journal_entry.user_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Journal Entry
+      </button>
+      or
+      <a href="/journal_entries/<%= @journal_entry.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

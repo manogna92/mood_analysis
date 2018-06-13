@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>
+    Journal entries
+    <a href="/journal_entries/new" class="btn btn-lg btn-success">New Journal entry</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Work hours per day</th>
+        <th>Sleep hours per day</th>
+        <th>Social connections per day</th>
+        <th>User</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @journal_entries.each do |journal_entry| %>
+      <tr>
+        <td><%= journal_entry.work_hours_per_day %></td>
+        <td><%= journal_entry.sleep_hours_per_day %></td>
+        <td><%= journal_entry.social_connections_per_day %></td>
+        <td><%= journal_entry.user_id %></td>
+        <td>
+          <a href="/journal_entries/<%= journal_entry.id %>" class="btn btn-primary">Show</a>
+          <a href="/journal_entries/<%= journal_entry.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_journal_entry/<%= journal_entry.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
