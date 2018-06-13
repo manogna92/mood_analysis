@@ -10,7 +10,8 @@ class JournalEntriesController < ApplicationController
   end
 
   def index
-    @journal_entries = JournalEntry.page(params[:page]).per(10)
+    @q = JournalEntry.ransack(params[:q])
+    @journal_entries = @q.result(:distinct => true).includes(:user).page(params[:page]).per(10)
 
     render("journal_entries/index.html.erb")
   end
