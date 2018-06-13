@@ -21,7 +21,7 @@
         <td><%= journal_entry.work_hours_per_day %></td>
         <td><%= journal_entry.sleep_hours_per_day %></td>
         <td><%= journal_entry.social_connections_per_day %></td>
-        <td><%= journal_entry.user_id %></td>
+        <td><%= journal_entry.user.created_at %></td>
         <td>
           <a href="/journal_entries/<%= journal_entry.id %>" class="btn btn-primary">Show</a>
           <a href="/journal_entries/<%= journal_entry.id %>/edit" class="btn btn-warning">Edit</a>
