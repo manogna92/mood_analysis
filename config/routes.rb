@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "journal_entries#index"
   # Routes for the Journal_entry resource:
   # CREATE
   get "/journal_entries/new", :controller => "journal_entries", :action => "new"
