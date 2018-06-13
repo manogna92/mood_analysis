@@ -1,4 +1,6 @@
 ActiveAdmin.register JournalEntry do
+
+ permit_params :work_hours_per_day, :sleep_hours_per_day, :social_connections_per_day, :user_id
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
